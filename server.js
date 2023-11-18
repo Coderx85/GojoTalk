@@ -1,4 +1,3 @@
-const PORT = 8000
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -9,6 +8,8 @@ app.use(cors())
 
 const LANGUAGE_MODEL_API_KEY = process.env.LANGUAGE_MODEL_API_KEY
 const LANGUAGE_MODEL_URL = `https://generativelanguage.googleapis.com/v1beta1/models/chat-bison-001:generateMessage?key=${LANGUAGE_MODEL_API_KEY}`
+const PORT = 8000
+
 
 app.get('/prompt/:text', async (req, res) => {
     const text = req.params.text
@@ -19,6 +20,7 @@ app.get('/prompt/:text', async (req, res) => {
         candidate_count: 1,
         // max_tokens: 10,
     }
+
     const response = await fetch(LANGUAGE_MODEL_URL, {
         headers: {
             "Content-Type": "application/json"
@@ -32,5 +34,4 @@ app.get('/prompt/:text', async (req, res) => {
 })      
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`))
-
 
