@@ -108,3 +108,13 @@ button {
     height: 300px;
     overflow-y: scroll;
 }
+
+@media screen and (max-width: 1000px) {
+    .chat-bot{
+        width: 100%;
+    }
+
+    .bubble{
+        font-size: 13px;
+    }    
+  }
